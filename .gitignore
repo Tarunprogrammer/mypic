@@ -1,0 +1,8 @@
+vendor/
+*.log
+.env*
+serviceAccountKey.json
+*.pem
+*.key
+*.p12
+*.log

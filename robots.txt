@@ -1,0 +1,11 @@
+# Robots.txt for MYPIC (AI Face Recognition Event Photo Finder)
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /uploads/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /config/
+
+# Search Engine Sitemap
+Sitemap: http://eppe.gt.tc/sitemap.xml

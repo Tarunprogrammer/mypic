@@ -1,0 +1,41 @@
+# ==============================================================================
+# MYPIC - Apache Server Configuration (.htaccess)
+# ==============================================================================
+
+# 1. Set Default Document
+DirectoryIndex index.php index.html
+
+# 2. Enable Rewrite Engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Prevent direct access to sensitive config files
+    RewriteRule ^config/schema\.sql$ - [F,L]
+    RewriteRule ^database\.sql$ - [F,L]
+</IfModule>
+
+# 3. Add MIME Types for AI models & JSON
+<IfModule mod_mime.c>
+    AddType application/json .json
+    AddType application/octet-stream .shard1
+    AddType application/octet-stream .shard2
+    AddType application/octet-stream .bin
+    AddType image/webp .webp
+</IfModule>
+
+# 4. Enable Full CORS & Cache Management
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, DELETE"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</IfModule>
+
+# 5. Set UTF-8 Encoding
+AddDefaultCharset UTF-8
+
+# 6. Disable Directory Browsing
+Options -Indexes
